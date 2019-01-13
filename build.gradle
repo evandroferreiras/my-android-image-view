@@ -15,6 +15,11 @@ buildscript {
     }
 }
 
+plugins {
+    id "com.github.dcendents.android-maven" version "2.1"
+    id "com.jfrog.bintray" version "1.8.4"
+}
+
 allprojects {
     repositories {
         google()
@@ -22,6 +27,10 @@ allprojects {
     }
 }
 
-task clean(type: Delete) {
+subprojects {
+    tasks.withType(Javadoc).all { enabled = false }
+}
+
+clean {
     delete rootProject.buildDir
 }
